@@ -16,10 +16,10 @@ import { Component } from '@angular/core';
         </ul>
       </nz-sider>
       <nz-layout>
-        <nz-header style="background: #fff; padding:0;">NAS Toolbox</nz-header>
+        <nz-header style="background: #fff; padding:0;"> NAS Toolbox</nz-header>
         <nz-content style="margin:24px 16px 0;">
           <div style="padding:24px; background: #fff; min-height: 720px;">
-            <app-component-table></app-component-table>
+            <app-page-batch></app-page-batch>
           </div>
         </nz-content>
         <nz-footer style="text-align: center;">Nebulas Toolbox by Ljm625</nz-footer>

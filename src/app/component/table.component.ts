@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-component-table',
   template: `
-    <button nz-button (click)="addRow()" class="editable-add-btn">Add</button>
     <nz-table
       #editRowTable
       nzBordered
@@ -65,6 +64,8 @@ import { Component, OnInit } from '@angular/core';
         </tr>
       </tbody>
     </nz-table>
+    <button nz-button (click)="addRow()" class="editable-add-btn">Add</button>
+
   `,
   styles  : [
     `

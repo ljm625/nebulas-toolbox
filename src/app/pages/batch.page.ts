@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-page-batch',
   templateUrl: './batch.page.html',
-  styles  : [
-    `
+  styles: [
+      `
       :host ::ng-deep .logo {
         height: 32px;
-        background: rgba(255,255,255,.2);
+        background: rgba(255, 255, 255, .2);
         margin: 16px;
       }
     `
@@ -15,4 +15,23 @@ import { Component } from '@angular/core';
 })
 export class BatchPage {
   isCollapsed = false;
+  current = 0;
+  size = 'large';
+
+
+  nextStep() {
+    if (this.current < 2) {
+      this.current = this.current + 1;
+
+    }
+  }
+
+  prevStep() {
+    if (this.current > 0) {
+      this.current = this.current - 1;
+
+    }
+  }
+
+
 }

@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<nz-steps [nzCurrent]="current" nzSize="small">
+  <nz-step nzTitle="Input Info"></nz-step>
+  <nz-step nzTitle="Review Info"></nz-step>
+  <nz-step nzTitle="Send"></nz-step>
+</nz-steps>
 
-</body>
-</html>
+<app-component-table></app-component-table>
+
+<div nz-row nzType="flex" nzJustify="end">
+
+<nz-button-group [nzSize]="size">
+  <button nz-button nzType="primary" (click)="prevStep()"><i class="anticon anticon-left"></i>Backward</button>
+  <button nz-button nzType="primary"  (click)="nextStep()">Forward<i class="anticon anticon-right"></i></button>
+</nz-button-group>
+
+</div>
