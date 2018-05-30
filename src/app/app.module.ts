@@ -10,6 +10,7 @@ import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {AppDashboard} from './dashboard.component';
 import {TableComponent} from './component/table.component';
 import {BatchPage} from './pages/batch.page';
+import {ReviewComponent} from './component/review.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {BatchPage} from './pages/batch.page';
     AppComponent,
     AppDashboard,
     TableComponent,
+    ReviewComponent,
     BatchPage
   ],
   imports: [

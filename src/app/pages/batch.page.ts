@@ -13,10 +13,12 @@ import {Component} from '@angular/core';
     `
   ]
 })
+
 export class BatchPage {
   isCollapsed = false;
   current = 0;
   size = 'large';
+  address_list = [];
 
 
   nextStep() {

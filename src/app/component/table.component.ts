@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-component-table',
@@ -8,70 +8,91 @@ import { Component, OnInit } from '@angular/core';
       nzBordered
       [nzData]="dataSet">
       <thead>
-        <tr>
-          <th nzWidth="25%">Name</th>
-          <th nzWidth="15%">NAS Amount</th>
-          <th nzWidth="40%">Address</th>
-          <th>Action</th>
-        </tr>
+      <tr>
+        <th nzWidth="25%">Name</th>
+        <th nzWidth="15%">NAS Amount</th>
+        <th nzWidth="40%">Address</th>
+        <th>Action</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of editRowTable.data">
-          <td>
-            <div class="editable-cell">
-              <div class="editable-cell-text-wrapper">
-                <ng-container *ngIf="!editCache[data.key].edit">
-                  {{data.name}}
-                </ng-container>
-                <ng-container *ngIf="editCache[data.key].edit">
-                  <input type="text" nz-input [(ngModel)]="editCache[data.key].data.name">
-                </ng-container>
-              </div>
-            </div>
-          </td>
-          <td>
-            <ng-container *ngIf="!editCache[data.key].edit">
-              {{data.amount}}
-            </ng-container>
-            <ng-container *ngIf="editCache[data.key].edit">
-              <input type="text" nz-input [(ngModel)]="editCache[data.key].data.amount">
-            </ng-container>
-          </td>
-          <td>
-            <ng-container *ngIf="!editCache[data.key].edit">
-              {{data.address}}
-            </ng-container>
-            <ng-container *ngIf="editCache[data.key].edit">
-              <input type="text" nz-input [(ngModel)]="editCache[data.key].data.address">
-            </ng-container>
-          </td>
-          <td>
-            <div class="editable-row-operations">
+      <tr *ngFor="let data of editRowTable.data">
+        <td>
+          <div class="editable-cell">
+            <div class="editable-cell-text-wrapper">
               <ng-container *ngIf="!editCache[data.key].edit">
-                <a (click)="startEdit(data.key)">Edit</a>
+                {{data.name}}
               </ng-container>
               <ng-container *ngIf="editCache[data.key].edit">
-                <a (click)="saveEdit(data.key)">Save</a>
-                <nz-popconfirm [nzTitle]="'Sure to cancel?'" (nzOnConfirm)="cancelEdit(data.key)">
-                  <a nz-popconfirm>Cancel</a>
-                </nz-popconfirm>
+                <input type="text" nz-input [(ngModel)]="editCache[data.key].data.name">
               </ng-container>
             </div>
-            <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(data.key)">
-              <a nz-popconfirm>Delete</a>
-            </nz-popconfirm>
-          </td>
-        </tr>
+          </div>
+        </td>
+        <td>
+          <ng-container *ngIf="!editCache[data.key].edit">
+            {{data.amount}}
+          </ng-container>
+          <ng-container *ngIf="editCache[data.key].edit">
+            <input type="text" nz-input [(ngModel)]="editCache[data.key].data.amount">
+          </ng-container>
+        </td>
+        <td>
+          <ng-container *ngIf="!editCache[data.key].edit">
+            {{data.address}}
+          </ng-container>
+          <ng-container *ngIf="editCache[data.key].edit">
+            <input type="text" nz-input [(ngModel)]="editCache[data.key].data.address">
+          </ng-container>
+        </td>
+        <td>
+          <div class="editable-row-operations">
+            <ng-container *ngIf="!editCache[data.key].edit">
+              <a (click)="startEdit(data.key)">Edit</a>
+            </ng-container>
+            <ng-container *ngIf="editCache[data.key].edit">
+              <a (click)="saveEdit(data.key)">Save</a>
+              <nz-popconfirm [nzTitle]="'Sure to cancel?'" (nzOnConfirm)="cancelEdit(data.key)">
+                <a nz-popconfirm>Cancel</a>
+              </nz-popconfirm>
+            </ng-container>
+          </div>
+          <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(data.key)">
+            <a nz-popconfirm>Delete</a>
+          </nz-popconfirm>
+        </td>
+      </tr>
       </tbody>
     </nz-table>
-    <button nz-button (click)="addRow()" class="editable-add-btn">Add</button>
+    <div nz-row nzType="flex" nzJustify="end" style="margin-bottom: 10px">
+      <button nz-button (click)="addRow()" class="editable-add-btn" style="display:inline; margin-right: 10px">Add
+      </button>
+        <input type="text" nz-input placeholder="Enter Total NAS Amount" [(ngModel)]="username"
+               style="width:200px;display:inline;">
+    </div>
 
   `,
-  styles  : [
-    `
+  styles: [
+      `
       .editable-row-operations a {
         margin-right: 8px;
       }
+
+      .anticon-close-circle {
+        cursor: pointer;
+        color: #ccc;
+        transition: color 0.3s;
+        font-size: 12px;
+      }
+
+      .anticon-close-circle:hover {
+        color: #999;
+      }
+
+      .anticon-close-circle:active {
+        color: #666;
+      }
+
     `
   ]
 })
@@ -79,15 +100,18 @@ export class TableComponent implements OnInit {
   i = 1;
   editCache = {};
   dataSet = [];
+  username;
+
   addRow(): void {
     this.i++;
-    this.dataSet = [ ...this.dataSet, {
-      key    : `${this.i}`,
-      name   : `Edward King ${this.i}`,
-      amount    : '32',
-      address: `London, Park Lane no. ${this.i}`
-    } ];
+    this.dataSet = [...this.dataSet, {
+      key: `${this.i}`,
+      name: `Account ${this.i}`,
+      amount: '0',
+      address: `Input NAS address here`
+    }];
     this.updateEditCache();
+    this.startEdit(this.i.toString());
   }
 
   deleteRow(i: string): void {
@@ -96,23 +120,23 @@ export class TableComponent implements OnInit {
   }
 
   startEdit(key: string): void {
-    this.editCache[ key ].edit = true;
+    this.editCache[key].edit = true;
   }
 
   cancelEdit(key: string): void {
-    this.editCache[ key ].edit = false;
+    this.editCache[key].edit = false;
   }
 
   saveEdit(key: string): void {
     const index = this.dataSet.findIndex(item => item.key === key);
-    this.dataSet[ index ] = this.editCache[ key ].data;
-    this.editCache[ key ].edit = false;
+    this.dataSet[index] = this.editCache[key].data;
+    this.editCache[key].edit = false;
   }
 
   updateEditCache(): void {
     this.dataSet.forEach(item => {
-      if (!this.editCache[ item.key ]) {
-        this.editCache[ item.key ] = {
+      if (!this.editCache[item.key]) {
+        this.editCache[item.key] = {
           edit: false,
           data: item
         };
@@ -121,15 +145,15 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    for (let i = 0; i < 5; i++) {
-      this.dataSet.push({
-        key    : i.toString(),
-        name   : `Edrward ${i}`,
-        amount    : 32,
-        address: `London Park no. ${i}`,
-      });
-    }
-    this.i = 5;
+    // for (let i = 0; i < 5; i++) {
+    //   this.dataSet.push({
+    //     key: i.toString(),
+    //     name: `Edrward ${i}`,
+    //     amount: 32,
+    //     address: `London Park no. ${i}`,
+    //   });
+    // }
+    this.i = 0;
     this.updateEditCache();
   }
 }

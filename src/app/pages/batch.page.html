@@ -4,7 +4,11 @@
   <nz-step nzTitle="Send"></nz-step>
 </nz-steps>
 
-<app-component-table></app-component-table>
+<br>
+
+<app-component-table [hidden]="current!=0"></app-component-table>
+
+<app-component-review [hidden] = "current!=1"></app-component-review>
 
 <div nz-row nzType="flex" nzJustify="end">
 
