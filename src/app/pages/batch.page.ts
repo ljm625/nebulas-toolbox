@@ -20,6 +20,7 @@ export class BatchPage {
   size = 'large';
   address_list = [];
   form_data = [];
+  totalNas = 0;
 
 
   nextStep() {
@@ -41,5 +42,8 @@ export class BatchPage {
     this.form_data = $event;
   }
 
+  getTotal($event) {
+    this.totalNas = $event;
+  }
 
 }

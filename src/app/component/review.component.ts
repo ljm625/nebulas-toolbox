@@ -16,7 +16,8 @@ import {Component, Input, OnInit} from '@angular/core';
             <ng-template #nzDescription>
                 <p style="display: inline">{{item.address}}
                 </p>
-                <p style="display: inline; float:right" align="right">{{item.amount}} NAS</p>
+                <p style="display: inline; float:right" align="right" *ngIf="equalDistribute">{{totalNAS/(form_data.length)}} NAS</p>
+                <p style="display: inline; float:right" align="right" *ngIf="!equalDistribute">{{item.amount}} NAS</p>
             </ng-template>
           </nz-list-item-meta>
         </nz-list-item>
@@ -44,6 +45,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ReviewComponent implements OnInit {
   @Input() form_data = [];
+  @Input() equalDistribute = false;
+  @Input() totalNAS = 0;
   data = [
     {
       name: 'Account 1',

@@ -6,9 +6,9 @@
 
 <br>
 
-<app-component-table [hidden]="current!=0" (dataEmit)="getFormData($event)"></app-component-table>
+<app-component-table [hidden]="current!=0" (dataEmit)="getFormData($event)" [equalDistribute]="true" (totalEmit)="getTotal($event)"></app-component-table>
 
-<app-component-review [hidden] = "current!=1" [form_data]="form_data"></app-component-review>
+<app-component-review [hidden] = "current!=1" [form_data]="form_data" [equalDistribute]="true" [totalNAS]="totalNas"></app-component-review>
 
 <div nz-row nzType="flex" nzJustify="end">
 

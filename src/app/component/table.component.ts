@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-component-table',
@@ -10,7 +10,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
       <thead>
       <tr>
         <th nzWidth="25%">Name</th>
-        <th nzWidth="15%">NAS Amount</th>
+        <th nzWidth="15%" *ngIf="!equalDistribute">NAS Amount</th>
         <th nzWidth="40%">Address</th>
         <th>Action</th>
       </tr>
@@ -29,7 +29,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
             </div>
           </div>
         </td>
-        <td>
+        <td *ngIf="!equalDistribute">
           <ng-container *ngIf="!editCache[data.key].edit">
             {{data.amount}}
           </ng-container>
@@ -67,8 +67,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
     <div nz-row nzType="flex" nzJustify="end" style="margin-bottom: 10px">
       <button nz-button (click)="addRow()" class="editable-add-btn" style="display:inline; margin-right: 10px">Add
       </button>
-        <input type="text" nz-input placeholder="Enter Total NAS Amount" [(ngModel)]="username"
-               style="width:200px;display:inline;">
+      <input *ngIf="equalDistribute" type="text" nz-input placeholder="Enter Total NAS Amount" (keyup)="emitTotal()"
+             [(ngModel)]="totalNAS" style="width:200px;display:inline;">
     </div>
 
   `,
@@ -100,8 +100,15 @@ export class TableComponent implements OnInit {
   i = 1;
   editCache = {};
   dataSet = [];
-  username;
+  totalNAS;
+  @Input() equalDistribute = true;
   @Output() dataEmit = new EventEmitter();
+  @Output() totalEmit = new EventEmitter();
+
+
+  emitTotal() {
+    this.totalEmit.emit(this.totalNAS);
+  }
 
   addRow(): void {
     this.i++;
