@@ -6,9 +6,9 @@
 
 <br>
 
-<app-component-table [hidden]="current!=0"></app-component-table>
+<app-component-table [hidden]="current!=0" (dataEmit)="getFormData($event)"></app-component-table>
 
-<app-component-review [hidden] = "current!=1"></app-component-review>
+<app-component-review [hidden] = "current!=1" [form_data]="form_data"></app-component-review>
 
 <div nz-row nzType="flex" nzJustify="end">
 

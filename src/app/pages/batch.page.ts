@@ -19,6 +19,7 @@ export class BatchPage {
   current = 0;
   size = 'large';
   address_list = [];
+  form_data = [];
 
 
   nextStep() {
@@ -33,6 +34,11 @@ export class BatchPage {
       this.current = this.current - 1;
 
     }
+  }
+
+  getFormData($event) {
+    console.log($event);
+    this.form_data = $event;
   }
 
 

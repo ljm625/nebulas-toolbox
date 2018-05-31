@@ -1,17 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-component-review',
   template: `
-    <nz-list [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+    <nz-list [nzDataSource]="form_data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
       <ng-template #item let-item>
         <nz-list-item>
           <nz-list-item-meta
             [nzTitle]="nzTitle"
             nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            nzDescription="Ant Design, a design language for background applications, is refined by Ant UED Team">
+            [nzDescription]="nzDescription">
             <ng-template #nzTitle>
-              <a href="https://ng.ant.design">{{item.title}}</a>
+              <a >{{item.name}}</a>
+            </ng-template>
+            <ng-template #nzDescription>
+                <p style="display: inline">{{item.address}}
+                </p>
+                <p style="display: inline; float:right" align="right">{{item.amount}} NAS</p>
             </ng-template>
           </nz-list-item-meta>
         </nz-list-item>
@@ -38,18 +43,27 @@ import {Component, OnInit} from '@angular/core';
   ]
 })
 export class ReviewComponent implements OnInit {
+  @Input() form_data = [];
   data = [
     {
-      title: 'Ant Design Title 1'
+      name: 'Account 1',
+      address: '',
+      amount: 500
     },
     {
-      title: 'Ant Design Title 2'
+      name: 'Account 2',
+      address: '',
+      amount: 500
     },
     {
-      title: 'Ant Design Title 3'
+      name: 'Account 3',
+      address: '',
+      amount: 500
     },
     {
-      title: 'Ant Design Title 4'
+      name: 'Account 4',
+      address: '',
+      amount: 500
     }
   ];
 

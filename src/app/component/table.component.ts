@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-component-table',
@@ -101,6 +101,7 @@ export class TableComponent implements OnInit {
   editCache = {};
   dataSet = [];
   username;
+  @Output() dataEmit = new EventEmitter();
 
   addRow(): void {
     this.i++;
@@ -112,6 +113,7 @@ export class TableComponent implements OnInit {
     }];
     this.updateEditCache();
     this.startEdit(this.i.toString());
+    this.dataEmit.emit(this.dataSet);
   }
 
   deleteRow(i: string): void {
@@ -131,6 +133,7 @@ export class TableComponent implements OnInit {
     const index = this.dataSet.findIndex(item => item.key === key);
     this.dataSet[index] = this.editCache[key].data;
     this.editCache[key].edit = false;
+    this.dataEmit.emit(this.dataSet);
   }
 
   updateEditCache(): void {
