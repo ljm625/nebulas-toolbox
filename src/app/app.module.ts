@@ -11,6 +11,7 @@ import {AppDashboard} from './dashboard.component';
 import {TableComponent} from './component/table.component';
 import {BatchPage} from './pages/batch.page';
 import {ReviewComponent} from './component/review.component';
+import {NebpayComponent} from "./component/nebpay.component";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {ReviewComponent} from './component/review.component';
     AppDashboard,
     TableComponent,
     ReviewComponent,
-    BatchPage
+    BatchPage,
+    NebpayComponent
   ],
   imports: [
     BrowserModule,

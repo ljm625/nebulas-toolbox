@@ -126,6 +126,7 @@ export class TableComponent implements OnInit {
   deleteRow(i: string): void {
     const dataSet = this.dataSet.filter(d => d.key !== i);
     this.dataSet = dataSet;
+    this.dataEmit.emit(this.dataSet);
   }
 
   startEdit(key: string): void {

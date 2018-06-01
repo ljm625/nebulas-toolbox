@@ -21,6 +21,8 @@ export class BatchPage {
   address_list = [];
   form_data = [];
   totalNas = 0;
+  contract_address="n1Y9JLyHUdHqFTvZD9S2a5acx6vsPeTHFCJ";
+
 
 
   nextStep() {
