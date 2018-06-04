@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import * as NebPay from 'nebpay.js';
+
 @Component({
   selector: 'app-component-nebpay',
   template: `
@@ -14,12 +15,16 @@ import * as NebPay from 'nebpay.js';
       <p style="margin-bottom: 0.2em">To: <b>{{dest}}</b></p>
     </div>
     <div nz-row nzType="flex" nzJustify="center" style="margin-bottom: 10px">
-      <p>Data: djiwjdworijskxjiwjrodjck</p>
+      <p>Function: {{set_function()}}</p>
+    </div>
+    <div nz-row nzType="flex" nzJustify="center" style="margin-bottom: 10px">
+      <p>Args: {{setArgs()}}</p>
     </div>
 
     <div nz-row nzType="flex" nzJustify="center" style="margin-bottom: 10px">
 
-      <button nz-button class="big-button" nzType="primary" nzSize="large" nzShape="circle"><i class="anticon anticon-check"></i>
+      <button nz-button class="big-button" nzType="primary" nzSize="large" nzShape="circle" (click)="sendTX()"><i
+        class="anticon anticon-check"></i>
       </button>
     </div>
   `,
@@ -48,11 +53,13 @@ import * as NebPay from 'nebpay.js';
   ]
 })
 export class NebpayComponent implements OnInit {
-  @Input() dest = "";
+  @Input() dest = '';
   @Input() data = [];
   @Input() totalNAS = 0;
-
-
+  @Input() equal = true;
+  nebPay = new NebPay();
+  function_name = "";
+  args = [];
   // data = [
   //   {
   //     name: 'Account 1',
@@ -76,10 +83,49 @@ export class NebpayComponent implements OnInit {
   //   }
   // ];
 
+
+  set_function() {
+    if (this.equal) {
+      this.function_name = "distribute_equal";
+    }
+    else {
+      this.function_name = "custom_distribute";
+    }
+    return this.function_name;
+  }
+
   ngOnInit() {
-    console.log("lalala");
-    var np = new NebPay();
-    np.pay("ssss");
+    console.log('lalala');
+  }
+
+  sendTX() {
+    console.log("Start send transaction");
+    const to = this.dest;   // Dapp的合约地址
+    const value = this.totalNAS;
+    const callFunction = this.function_name; // 调用的函数名称
+    const callArgs = JSON.stringify(this.args);
+    this.nebPay.call(to, value, callFunction, callArgs);
+  }
+
+  setArgs() {
+    this.args = [];
+    if (this.equal) {
+      let address = [];
+      for (let val of this.data) {
+        address = [...address, val.address];
+      }
+      this.args[0] = address;
+    } else {
+      let address = [];
+      let amount = [];
+      for (let val of this.data) {
+        address = [...address, val.address];
+        amount = [...amount, val.amount];
+      }
+      this.args[0] = address;
+      this.args[1] = amount;
+    }
+    return JSON.stringify(this.args);
   }
 
 }

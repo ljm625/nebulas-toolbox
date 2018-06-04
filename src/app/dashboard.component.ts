@@ -16,7 +16,9 @@ import { Component } from '@angular/core';
         </ul>
       </nz-sider>
       <nz-layout>
-        <nz-header style="background: #fff; padding:0;"> NAS Toolbox</nz-header>
+        <nz-header style="background: #fff; padding:0;">
+          <p style="margin-left: 20px;font-size: xx-large">NAS Toolbox</p>
+        </nz-header>
         <nz-content style="margin:24px 16px 0;">
           <div style="padding:24px; background: #fff; min-height: 720px;">
             <app-page-batch></app-page-batch>
