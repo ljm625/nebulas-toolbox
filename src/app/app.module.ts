@@ -12,6 +12,19 @@ import {TableComponent} from './component/table.component';
 import {BatchPage} from './pages/batch.page';
 import {ReviewComponent} from './component/review.component';
 import {NebpayComponent} from "./component/nebpay.component";
+import {SmartPage} from "./pages/smart.page";
+import { RouterModule, Routes } from '@angular/router';
+
+
+const appRoutes: Routes = [
+  { path: 'batch', component: BatchPage },
+  { path: 'smart',      component: SmartPage },
+  { path: '',
+    redirectTo: '/batch',
+    pathMatch: 'full'
+  },
+
+];
 
 
 @NgModule({
@@ -21,6 +34,7 @@ import {NebpayComponent} from "./component/nebpay.component";
     TableComponent,
     ReviewComponent,
     BatchPage,
+    SmartPage,
     NebpayComponent
   ],
   imports: [
@@ -28,7 +42,8 @@ import {NebpayComponent} from "./component/nebpay.component";
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule.forRoot()
+    NgZorroAntdModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
 
   ],
   providers: [],

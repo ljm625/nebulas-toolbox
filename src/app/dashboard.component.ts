@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +8,12 @@ import { Component } from '@angular/core';
         <div class="logo">
         </div>
         <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
-          <li nz-menu-item><span><i class="anticon anticon-user"></i><span class="nav-text">NAS Batch distribute</span></span></li>
-          <li nz-menu-item><span><i class="anticon anticon-video-camera"></i><span class="nav-text">NAS Smart distribute</span></span>
+          <li nz-menu-item><span><i class="anticon anticon-user"></i><span class="nav-text" routerLink="/batch" routerLinkActive="active">NAS Batch distribute</span></span>
           </li>
-          <li nz-menu-item><span><i class="anticon anticon-upload"></i><span class="nav-text">Nebulas Smart Wallet</span></span></li>
+          <li nz-menu-item><span><i class="anticon anticon-video-camera"></i><span class="nav-text" routerLink="/smart" routerLinkActive="active">NAS Smart distribute</span></span>
+          </li>
+          <li nz-menu-item><span><i class="anticon anticon-upload"></i><span
+            class="nav-text">Nebulas Smart Wallet</span></span></li>
           <li nz-menu-item><span><i class="anticon anticon-user"></i><span class="nav-text">nav 4</span></span></li>
         </ul>
       </nz-sider>
@@ -21,18 +23,18 @@ import { Component } from '@angular/core';
         </nz-header>
         <nz-content style="margin:24px 16px 0;">
           <div style="padding:24px; background: #fff; min-height: 720px;">
-            <app-page-batch></app-page-batch>
+            <router-outlet></router-outlet>
           </div>
         </nz-content>
         <nz-footer style="text-align: center;">Nebulas Toolbox by Ljm625</nz-footer>
       </nz-layout>
     </nz-layout>
   `,
-  styles  : [
+  styles: [
       `
       :host ::ng-deep .logo {
         height: 32px;
-        background: rgba(255,255,255,.2);
+        background: rgba(255, 255, 255, .2);
         margin: 16px;
       }
     `

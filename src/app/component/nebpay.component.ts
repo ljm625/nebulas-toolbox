@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import * as NebPay from 'nebpay.js';
+import * as config from '../../config.global';
 
 @Component({
   selector: 'app-component-nebpay',
@@ -53,13 +54,14 @@ import * as NebPay from 'nebpay.js';
   ]
 })
 export class NebpayComponent implements OnInit {
-  @Input() dest = '';
+  @Input() dest = config.batch_distribute_address;
   @Input() data = [];
   @Input() totalNAS = 0;
   @Input() equal = true;
   nebPay = new NebPay();
-  function_name = "";
+  function_name = '';
   args = [];
+
   // data = [
   //   {
   //     name: 'Account 1',

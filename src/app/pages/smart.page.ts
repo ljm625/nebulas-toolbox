@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import * as config from '../../config.global';
 
 @Component({
-  selector: 'app-page-batch',
-  templateUrl: './batch.page.html',
+  selector: 'app-page-smart',
+  templateUrl: './smart.page.html',
   styles: [
-      `
+    `
       :host ::ng-deep .logo {
         height: 32px;
         background: rgba(255, 255, 255, .2);
@@ -15,7 +15,7 @@ import * as config from '../../config.global';
   ]
 })
 
-export class BatchPage {
+export class SmartPage {
   isCollapsed = false;
   current = 0;
   size = 'large';
