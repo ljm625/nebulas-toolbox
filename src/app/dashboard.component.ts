@@ -8,13 +8,13 @@ import {Component} from '@angular/core';
         <div class="logo">
         </div>
         <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
-          <li nz-menu-item><span><i class="anticon anticon-user"></i><span class="nav-text" routerLink="/batch" routerLinkActive="active">NAS Batch distribute</span></span>
+          <li nz-menu-item routerLink="/batch" routerLinkActive="active"><span><i class="anticon anticon-user"></i><span class="nav-text" routerLink="/batch" routerLinkActive="active">NAS Batch distribute</span></span>
           </li>
-          <li nz-menu-item><span><i class="anticon anticon-video-camera"></i><span class="nav-text" routerLink="/smart" routerLinkActive="active">NAS Smart distribute</span></span>
+          <li nz-menu-item routerLink="/smart" routerLinkActive="active"><span><i class="anticon anticon-video-camera"></i><span class="nav-text" routerLink="/smart" routerLinkActive="active">NAS Smart distribute</span></span>
           </li>
           <li nz-menu-item><span><i class="anticon anticon-upload"></i><span
             class="nav-text">Nebulas Smart Wallet</span></span></li>
-          <li nz-menu-item><span><i class="anticon anticon-user"></i><span class="nav-text">nav 4</span></span></li>
+          <!--<li nz-menu-item><span><i class="anticon anticon-user"></i><span class="nav-text">nav 4</span></span></li>-->
         </ul>
       </nz-sider>
       <nz-layout>

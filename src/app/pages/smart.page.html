@@ -10,7 +10,7 @@
 
 <app-component-review [hidden] = "current!=1" [form_data]="form_data" [equalDistribute]="false" [totalNAS]="totalNas"></app-component-review>
 
-<app-component-nebpay *ngIf = "current==2" [totalNAS]="totalNas" [dest]="contract_address" [data]="form_data"></app-component-nebpay>
+<app-component-nebpay *ngIf = "current==2" [equal]="false" [totalNAS]="totalNas" [dest]="contract_address" [data]="form_data"></app-component-nebpay>
 
 <div nz-row nzType="flex" nzJustify="end">
 

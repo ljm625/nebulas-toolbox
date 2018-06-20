@@ -51,13 +51,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
               <a (click)="startEdit(data.key)">Edit</a>
             </ng-container>
             <ng-container *ngIf="editCache[data.key].edit">
-              <a (click)="saveEdit(data.key)">Save</a>
+              <a (click)="saveEdit(data.key);emitTotal();" >Save</a>
               <nz-popconfirm [nzTitle]="'Sure to cancel?'" (nzOnConfirm)="cancelEdit(data.key)">
                 <a nz-popconfirm>Cancel</a>
               </nz-popconfirm>
             </ng-container>
           </div>
-          <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(data.key)">
+          <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteRow(data.key);emitTotal();">
             <a nz-popconfirm>Delete</a>
           </nz-popconfirm>
         </td>
@@ -107,7 +107,17 @@ export class TableComponent implements OnInit {
 
 
   emitTotal() {
-    this.totalEmit.emit(this.totalNAS);
+    if(!this.equalDistribute){
+      let total = 0;
+      for (let val of this.dataSet) {
+        total += parseInt(val.amount);
+      }
+      console.log("total: "+total);
+      this.totalEmit.emit(total);
+    }
+    else{
+      this.totalEmit.emit(this.totalNAS);
+    }
   }
 
   addRow(): void {
