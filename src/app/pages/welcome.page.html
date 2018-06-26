@@ -1,0 +1,22 @@
+<nz-steps [nzCurrent]="current" nzSize="small">
+  <nz-step nzTitle="Input Info"></nz-step>
+  <nz-step nzTitle="Review Info"></nz-step>
+  <nz-step nzTitle="Send"></nz-step>
+</nz-steps>
+
+<br>
+
+<app-component-table [hidden]="current!=0" (dataEmit)="getFormData($event)" [equalDistribute]="false" (totalEmit)="getTotal($event)"></app-component-table>
+
+<app-component-review [hidden] = "current!=1" [form_data]="form_data" [equalDistribute]="false" [totalNAS]="totalNas"></app-component-review>
+
+<app-component-nebpay *ngIf = "current==2" [equal]="false" [totalNAS]="totalNas" [dest]="contract_address" [data]="form_data"></app-component-nebpay>
+
+<div nz-row nzType="flex" nzJustify="end">
+
+  <nz-button-group [nzSize]="size">
+    <button nz-button nzType="primary" (click)="prevStep()"><i class="anticon anticon-left"></i>Backward</button>
+    <button nz-button nzType="primary"  (click)="nextStep()">Forward<i class="anticon anticon-right"></i></button>
+  </nz-button-group>
+
+</div>

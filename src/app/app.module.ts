@@ -14,6 +14,7 @@ import {ReviewComponent} from './component/review.component';
 import {NebpayComponent} from "./component/nebpay.component";
 import {SmartPage} from "./pages/smart.page";
 import { RouterModule, Routes } from '@angular/router';
+import {WelcomePage} from "./pages/welcome.page";
 
 
 const appRoutes: Routes = [
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
     ReviewComponent,
     BatchPage,
     SmartPage,
+    WelcomePage,
     NebpayComponent
   ],
   imports: [
