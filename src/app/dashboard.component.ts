@@ -14,7 +14,7 @@ import {Component} from '@angular/core';
           </li>
           <li nz-menu-item><span><i class="anticon anticon-upload"></i><span
             class="nav-text">Nebulas Smart Wallet</span></span></li>
-          <!--<li nz-menu-item><span><i class="anticon anticon-user"></i><span class="nav-text">nav 4</span></span></li>-->
+          <li nz-menu-item routerLink="/welcome" routerLinkActive="active"><span><i class="anticon anticon-user"></i><span class="nav-text" routerLink="/welcome" routerLinkActive="active">Help</span></span></li>
         </ul>
       </nz-sider>
       <nz-layout>

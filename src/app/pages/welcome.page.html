@@ -1,22 +1,23 @@
-<nz-steps [nzCurrent]="current" nzSize="small">
-  <nz-step nzTitle="Input Info"></nz-step>
-  <nz-step nzTitle="Review Info"></nz-step>
-  <nz-step nzTitle="Send"></nz-step>
-</nz-steps>
+<h1 id="nebulastoolboxuserguide">Nebulas Toolbox UserGuide</h1>
 
-<br>
+<p>The Nebulas Toolbox is a tool for you to easily distibute NAS to multiple account (for example Airdrop) and much more.</p>
 
-<app-component-table [hidden]="current!=0" (dataEmit)="getFormData($event)" [equalDistribute]="false" (totalEmit)="getTotal($event)"></app-component-table>
+<p>Currently it supports </p>
 
-<app-component-review [hidden] = "current!=1" [form_data]="form_data" [equalDistribute]="false" [totalNAS]="totalNas"></app-component-review>
+<ul>
+  <li>NAS equally distribute (Distribute NAS to multiple address equally)</li>
 
-<app-component-nebpay *ngIf = "current==2" [equal]="false" [totalNAS]="totalNas" [dest]="contract_address" [data]="form_data"></app-component-nebpay>
+  <li>NAS custom batch distribute (Distribute NAS to multiple address with custom amount per address)</li>
 
-<div nz-row nzType="flex" nzJustify="end">
+  <li>Smart NAS wallet (the wallet auto checks if there's a tx from owner for given time. If time limit exceeded, the amount can be withdraw to the secondary wallet to avoid wallet loss) (Frontend still developing)</li>
+</ul>
 
-  <nz-button-group [nzSize]="size">
-    <button nz-button nzType="primary" (click)="prevStep()"><i class="anticon anticon-left"></i>Backward</button>
-    <button nz-button nzType="primary"  (click)="nextStep()">Forward<i class="anticon anticon-right"></i></button>
-  </nz-button-group>
+<h3 id="nasequaldistribute">NAS Equal Distribute</h3>
 
-</div>
+<p>For Simple batch distribute, choose "NAS batch distribute" on the left. Click add and enter the name and address. Do it multiple times for all recipients. Enter total NAS amount on the lower right. Then go to next page by clicking forward. Check if the summary is correct. If it's correct, go to the last page and click the button. the NebPay will popup and click send to send the contribution.</p>
+
+<h3 id="nascustomdistribute">NAS Custom Distribute</h3>
+
+<p>For Custom batch distribute, choose "NAS Smart distribute" on the left. Click add and enter the name, address and amount. Do it multiple times for all recipients. Go to next page by clicking forward. Check if the summary is correct. If it's correct, go to the last page and click the button. the NebPay will popup and click send to send the contribution.</p>
+
+<h5 id="forhelpandadvicespleasesendtoljmwowcom">For Help and advices, please send to ljm#wow.com</h5>

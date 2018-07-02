@@ -18,10 +18,11 @@ import {WelcomePage} from "./pages/welcome.page";
 
 
 const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePage},
   { path: 'batch', component: BatchPage },
   { path: 'smart',      component: SmartPage },
   { path: '',
-    redirectTo: '/batch',
+    redirectTo: '/welcome',
     pathMatch: 'full'
   },
 

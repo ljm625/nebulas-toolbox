@@ -16,37 +16,4 @@ import * as config from '../../config.global';
 })
 
 export class WelcomePage {
-  isCollapsed = false;
-  current = 0;
-  size = 'large';
-  address_list = [];
-  form_data = [];
-  totalNas = 0;
-  contract_address = config.batch_distribute_address;
-
-
-
-  nextStep() {
-    if (this.current < 2) {
-      this.current = this.current + 1;
-
-    }
-  }
-
-  prevStep() {
-    if (this.current > 0) {
-      this.current = this.current - 1;
-
-    }
-  }
-
-  getFormData($event) {
-    console.log($event);
-    this.form_data = $event;
-  }
-
-  getTotal($event) {
-    this.totalNas = $event;
-  }
-
 }
